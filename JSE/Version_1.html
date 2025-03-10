@@ -1,0 +1,77 @@
+
+<style>
+		pre code {
+			background-color: #eee;
+			border: 1px solid #999;
+			display: block;
+			padding: 20px;
+		}
+</style>
+
+
+
+<a href="Index.html">Tilbage</a>
+<br>
+<canvas id="Billede" width="1000" height="3000"></canvas>
+<pre>
+    <code>
+        //Hent larede
+        m = document.getElementById("Billede").getContext("2d")
+        
+        //Definer punkt
+        Punkt = function(x,y,c){m.fillStyle=c; m.fillRect(x,y,3,3)}
+        
+        //billede stoerlse
+        for(y=1; y<750; y++){
+        for(x=1; x<750; x++){
+        
+        //zoom og centrum
+        dx = (x-500)/100000-0.233
+        dy = (y-500)/100000-0.655
+        
+        //afstand
+        a = dx
+        b = dy
+        
+        //Det vigtige
+        for(t=1; t<200; t++){
+        d = (a*a)-(b*b)+dx
+        b = 2*(a*b)+dy
+        a = d
+        H = d>100
+        
+        //Farve
+        if(H){Punkt(x,y,"rgb("+ t +","+ t +","+ t*5 +")"); break}
+        }}}
+    </code> 
+</pre>
+<script>
+//Hent larede
+m = document.getElementById("Billede").getContext("2d")
+
+//Definer punkt
+Punkt = function(x,y,c){m.fillStyle=c; m.fillRect(x,y,3,3)}
+
+//billede stoerlse
+for(y=1; y<'1500'; y++){
+for(x=1; x<1500; x++){
+
+//zoom og centrum
+dx = (x-500)/170-0.233
+dy = (y-500)/170-0.655
+
+//afstand
+a = dx
+b = dy
+
+//Det vigtige
+for(t=1; t<200; t++){
+d = (a*a)-(b*b)+dx
+b = 2*(a*b)+dy
+a = d
+H = d>100
+
+//Farve
+if(H){Punkt(x,y,"rgb("+ t +","+ t +","+ t*5 +")"); break}
+}}}
+</script>

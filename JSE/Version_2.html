@@ -1,0 +1,84 @@
+<html>
+        <head>
+                <style>
+		pre code {
+			background-color: #eee;
+			border: 1px solid #999;
+			display: block;
+			padding: 20px;
+		}
+
+                </style>
+
+        </head>
+<body>
+        <a href="index.html">Tilbage</a>
+        <br>
+        <canvas id="BC" width="800" height="800"></canvas> <br>
+                
+        <pre>                <code>
+                        var canvas = document.getElementById('BC');
+                var context = canvas.getContext('2d');
+                
+                for(var x=0;x<200;x++)
+                {
+                        for(var y=0;y<200;y++)
+                        {       
+                                var i=0;
+                                var cx=-0.68+x/1200;
+                                var cy=-0.74+y/1200;
+                                var zx=0;
+                                var zy=0;     
+                                
+                                do
+                                {
+                                        var xt=zx*zy;
+                                        zx=zx*zx-zy*zy+cx;
+                                        zy=2*xt+cy;
+                                        i++;
+                                }
+                                while(i<255&&(zx*zx+zy*zy)<4);
+                                        
+                                var color=i.toString(16);
+                                context.beginPath();
+                                context.rect(x*4, y*4, 4, 4);
+                                context.fillStyle ='#'+color+color+color;
+                                context.fill();
+                        }
+                }</code>
+        </pre>
+
+        <script>
+        var canvas = document.getElementById('BC');
+        var context = canvas.getContext('2d');
+ //størelse
+        for(var x=0;x<200;x++)
+        {
+                for(var y=0;y<210;y++)
+                {       
+           //Aerkler Variabler
+                        var i=0;
+                        var cx=-2+x/50;
+                        var cy=-2+y/50;
+                        var zx=0;
+                        var zy=0;                        
+                //Mandlebrot formlen z_n=z^2_n-1 + c
+                        do
+                        {
+                                var xt=zx*zy;
+                                zx=zx*zx-zy*zy+cx;
+                                zy=2*xt+cy;
+                                i++;
+                        }
+                        while(i<255&&(zx*zx+zy*zy)<4);
+ //Farve
+                        var color=i.toString(16);
+                        context.beginPath();
+                        context.rect(x*4, y*4, 4, 4);
+                        context.fillStyle ='#'+color+color+color;
+                        context.fill();
+                }
+        }
+        </script>
+</body>
+</html>
